@@ -3,5 +3,5 @@ module.exports = {
   Client: require('./lib/Client'),
   Broker: require('./lib/Broker'),
   Server: require('./lib/Server'),
-  fetchOnce: require('./lib/Helper')
+  fetchOnce: require('./lib/Helper').fetchOnce
 }
