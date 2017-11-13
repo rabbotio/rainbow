@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "katopz@gmail.com",
+  "repository": "https://github.com/rabbotio/rainbow",
   "license": "MIT",
   "dependencies": {
     "apollo-fetch": "^0.6.0",
