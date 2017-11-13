@@ -1,0 +1,15 @@
+{
+  "name": "rainbow-example",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "katopz",
+  "license": "MIT",
+  "dependencies": {
+    "@rabbotio/rainbow": "^1.0.0"
+  }
+}

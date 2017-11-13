@@ -11,23 +11,23 @@ const config = {
 }
 
 // GraphQL server
-const Server = require('../lib/server.js')
+const { Server } = require('@rabbotio/rainbow')
 const schema = require('./schemas')
 const server = new Server({ schema, port: 4001 })
 await server.start()
 
 // Broker
-const Broker = require('../lib/broker')
+const { Broker } = require('@rabbotio/rainbow')
 const broker = new Broker(config)
 broker.start()
 
 // Worker
-const Worker = require('../lib/worker')
+const { Worker } = require('@rabbotio/rainbow')
 const worker = new Worker(config)
 worker.start()
 
 // Client
-const Client = require('../lib/client')
+const { Client } = require('@rabbotio/rainbow')
 const client = new Client(config)
 client.start()
 
