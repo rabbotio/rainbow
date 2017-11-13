@@ -10,6 +10,6 @@
   "author": "katopz",
   "license": "MIT",
   "dependencies": {
-    "@rabbotio/rainbow": "^1.0.0"
+    "@rabbotio/rainbow": "^1.0.1"
   }
 }
