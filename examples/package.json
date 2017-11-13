@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "katopz",
   "license": "MIT",
   "dependencies": {
-    "@rabbotio/rainbow": "^1.0.1"
+    "@rabbotio/rainbow": "^1.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }

@@ -10,23 +10,23 @@ describe('Rainbow', () => {
     }
 
     // GraphQL server
-    const Server = require('../lib/server.js')
+    const { Server } = require('../')
     const schema = require('./schemas')
     const server = new Server({ schema, port: 4001 })
     await server.start()
 
     // Broker
-    const Broker = require('../lib/broker')
+    const { Broker } = require('../')
     const broker = new Broker(config)
     broker.start()
 
     // Worker
-    const Worker = require('../lib/worker')
+    const { Worker } = require('../')
     const worker = new Worker(config)
     worker.start()
 
     // Client
-    const Client = require('../lib/client')
+    const { Client } = require('../')
     const client = new Client(config)
     client.start()
 
@@ -35,6 +35,7 @@ describe('Rainbow', () => {
       getFoo(bar:"ok") 
     }`
     const result = await client.fetch({ query }).catch(console.error)
+    console.log('result:', result)
     expect(JSON.parse(result)).toMatchObject({ data: { getFoo: 'Hello ok , Please login' } })
   })
 })

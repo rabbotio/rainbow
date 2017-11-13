@@ -1,6 +1,6 @@
 {
   "name": "@rabbotio/rainbow",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "main": "index.js",
   "description": "Pigato GraphQL wrapper for lazy dude",
   "author": "katopz <katopz@gmail.com>",
@@ -16,12 +16,16 @@
     "express": "^4.16.2",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.7.2",
-    "pigato": "0.0.46"
+    "pigato": "^0.0.46"
   },
   "devDependencies": {
     "jest": "^21.2.1"
   },
+  "peerDependencies": {
+    "graphql": "^0.9.0 || ^0.10.0 || ^0.11.0"
+  },
   "scripts": {
+    "release": "npm publish --access=public",
     "test": "jest"
   },
   "private": false

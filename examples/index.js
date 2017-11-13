@@ -25,13 +25,14 @@ const start = async () => {
   // Client
   const { Client } = require('@rabbotio/rainbow')
   const client = new Client(config)
+  client.start()
 
   // Fetch
   const query = `{
     getFoo(bar:"ok") 
   }`
   const result = await client.fetch({ query }).catch(console.error)
-  console.log(result)
+  console.log('result:', result)
 }
 
 start()
