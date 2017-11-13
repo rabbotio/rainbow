@@ -1,0 +1,22 @@
+{
+  "name": "@rabbotio/rainbow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "katopz@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-fetch": "^0.6.0",
+    "apollo-server-express": "^1.2.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.7.2",
+    "pigato": "0.0.46"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
