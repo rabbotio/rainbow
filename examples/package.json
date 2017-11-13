@@ -10,7 +10,7 @@
   "author": "katopz",
   "license": "MIT",
   "dependencies": {
-    "@rabbotio/rainbow": "^1.0.7"
+    "@rabbotio/rainbow": "^1.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

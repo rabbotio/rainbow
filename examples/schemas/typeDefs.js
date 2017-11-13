@@ -1,17 +1,10 @@
 module.exports = `
 type Query {
-  getFoo(
-    # Any String.
-    bar: String!
-  ): String
+  getFoo: String
 }
 
 type Mutation {
-  # Set something
-  setFoo(
-    # Any String.
-    bar: String!
-  ): String
+  setFoo(bar: String!): String
 }
 
 schema {
