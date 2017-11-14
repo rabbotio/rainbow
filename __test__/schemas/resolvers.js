@@ -1,13 +1,10 @@
-// Here's how to restrict access only for logged in users.
+let _bar = 'hello!'
 const resolvers = {
   Query: {
-    getFoo: (root, { bar }, context) => {
-      const name = context.user && context.user.name
-      return `Hello ${bar} ${name ? `, Nice to see you ${name}!` : ', Please login'}`
-    }
+    getFoo: (root, _, context) => _bar
   },
   Mutation: {
-    setFoo: (_, { bar }, context) => (context.user ? `Saved! ${bar}` : `Aw!, you'll need to logged in first!`)
+    setFoo: (_, { bar }, context) => (_bar = bar) && _bar
   }
 }
 

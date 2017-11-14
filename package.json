@@ -1,6 +1,6 @@
 {
   "name": "@rabbotio/rainbow",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "main": "index.js",
   "description": "Pigato GraphQL wrapper for lazy dude",
   "author": "katopz <katopz@gmail.com>",
@@ -13,9 +13,11 @@
     "apollo-fetch": "^0.6.0",
     "apollo-server-express": "^1.2.0",
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.7.2",
+    "helmet": "^3.9.0",
     "pigato": "^0.0.46"
   },
   "devDependencies": {

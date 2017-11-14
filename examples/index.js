@@ -1,31 +1,32 @@
 const start = async () => {
   // Config
   const brokerURI = 'tcp://127.0.0.1:55555'
+  const baseURL = 'http://localhost:4040'
 
   const config = {
     service: 'foo',
-    graphqlURI: 'http://localhost:4040/graphql',
+    graphqlURI: `${baseURL}/graphql`,
     brokerURI
   }
 
   // GraphQL server
-  const { Server } = require('@rabbotio/rainbow')
+  const { GraphQLServer } = require('../')
   const schema = require('./schemas')
-  const server = new Server({ schema, port: 4040 })
-  await server.start()
+  const graphQLServer = new GraphQLServer({ schema, baseURL, graphiqlEnabled: true })
+  await graphQLServer.start()
 
   // Broker
-  const { Broker } = require('@rabbotio/rainbow')
+  const { Broker } = require('../')
   const broker = new Broker(config)
   broker.start()
 
   // Worker
-  const { Worker } = require('@rabbotio/rainbow')
+  const { Worker } = require('../')
   const worker = new Worker(config)
   worker.start()
 
   // Client
-  const { Client } = require('@rabbotio/rainbow')
+  const { Client } = require('../')
   const client = new Client(config)
   client.start()
 
@@ -34,8 +35,8 @@ const start = async () => {
   const result = await client.fetch({ query }).catch(console.error)
   console.log('result:', result)
 
-  // FetchOnce
-  const { fetchOnce } = require('@rabbotio/rainbow')
+  // Or FetchOnce
+  const { fetchOnce } = require('../')
   fetchOnce({
     service: 'foo',
     brokerURI,

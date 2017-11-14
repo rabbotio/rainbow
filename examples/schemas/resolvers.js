@@ -1,10 +1,10 @@
-let _bazs = {}
+let _bar = 'hello!'
 const resolvers = {
   Query: {
-    getFoo: (root, _, context) => JSON.stringify(_bazs)
+    getFoo: (root, _, context) => _bar
   },
   Mutation: {
-    setFoo: (_, { bar }, context) => (_bazs[bar] = new Date().toISOString())
+    setFoo: (_, { bar }, context) => (_bar = bar) && _bar
   }
 }
 
