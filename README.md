@@ -11,7 +11,7 @@ Client (GraphQL) <--- Broker ---- Worker (GraphQL)
 ```
 
 ## How to use
-- See examples folder
+- See test folder
 
 ## Test
 ```
