@@ -1,20 +1,25 @@
 /* eslint-env jest */
 
+const BrokerController = require('../lib/BrokerController')
+let graphQLServer
 describe('Rainbow', () => {
-  it('should able to fetch GraphQL', async () => {
+  it('should able to fetch GraphQL', async done => {
     // Config
     const baseURL = 'http://localhost:4001'
     const brokerURI = 'tcp://127.0.0.1:55555'
     const config = {
       service: 'foo',
       graphqlURI: `${baseURL}/graphql`,
-      brokerURI
+      brokerURI,
+      conf: {
+        ctrl: new BrokerController()
+      }
     }
 
     // GraphQL server, you can use your own
     const { GraphQLServer } = require('../')
     const schema = require('./schemas')
-    const graphQLServer = new GraphQLServer({ schema, baseURL, graphiqlEnabled: true })
+    graphQLServer = new GraphQLServer({ schema, baseURL, graphiqlEnabled: true })
     await graphQLServer.start()
 
     // Broker, you need this only if you're broker provider
@@ -44,5 +49,9 @@ describe('Rainbow', () => {
       query: `{ getFoo }`
     }).catch(console.error)
     expect(JSON.parse(mutationResult)).toMatchObject({ data: { getFoo: 'world!' } })
+
+    // Close for next test
+    await graphQLServer.stop()
+    done()
   })
 })
