@@ -1,5 +1,5 @@
 # rainbow
-[Pigato](https://github.com/prdn/pigato) GraphQL wrapper for lazy dude
+[Pigato](https://github.com/prdn/pigato) GraphQL wrapper for lazy dude 🌈
 
 ## Overview
 ```

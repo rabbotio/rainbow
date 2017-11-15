@@ -1,6 +1,4 @@
 /* eslint-env jest */
-let logger = console
-
 describe('Rainbow', () => {
   it('should able to mutate and query', async done => {
     // Config
@@ -32,11 +30,11 @@ describe('Rainbow', () => {
     await client.start()
 
     // Mutate from client
-    const mutationResult = await client.fetch({ query: `mutation { setFoo(bar: "world!") }` }).catch(logger.error)
+    const mutationResult = await client.fetch({ query: `mutation { setFoo(bar: "world!") }` }).catch(console.error)
     expect(JSON.parse(mutationResult)).toMatchObject({ data: { setFoo: 'world!' } })
 
     // Then query
-    const queryResult = await client.fetch({ query: `{ getFoo }` }).catch(logger.error)
+    const queryResult = await client.fetch({ query: `{ getFoo }` }).catch(console.error)
     expect(JSON.parse(queryResult)).toMatchObject({ data: { getFoo: 'world!' } })
 
     // Close for next test
