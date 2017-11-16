@@ -65,7 +65,7 @@ npm test
 - [ ] Alert
 - [ ] Simple example
 
-## Totest
+## TOTEST
 - [ ] 1 client, 1 broker, 1 worker
 - [ ] 1 client, 1 broker, 2 workers
 - [ ] 2 clients, 1 broker,1 worker
