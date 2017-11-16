@@ -3,7 +3,7 @@ describe('Rainbow', () => {
   it('should able to mutate and query', async done => {
     // Config
     const baseURL = 'http://localhost:4001'
-    const brokerURI = 'tcp://127.0.0.1:9000'
+    const brokerURI = 'tcp://0.0.0.0:9000'
     const serviceName = 'foo'
 
     // GraphQL server, you can use your own
