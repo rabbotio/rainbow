@@ -1,6 +1,6 @@
 {
   "name": "@rabbotio/rainbow",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "main": "index.js",
   "description": "Pigato GraphQL wrapper for lazy dude",
   "author": "katopz <katopz@gmail.com>",
