@@ -5,11 +5,12 @@ describe('Rainbow', () => {
     const baseURL = 'http://localhost:4001'
     const brokerURI = 'tcp://0.0.0.0:9000'
     const serviceName = 'foo'
+    const secret = 'good morning teacher sit down'
 
     // GraphQL server, you can use your own
     const { GraphQLServer } = require('../')
     const schema = require('./schemas')
-    const graphQLServer = new GraphQLServer(baseURL, schema, { graphiqlEnabled: true })
+    const graphQLServer = new GraphQLServer(baseURL, schema)
     await graphQLServer.start().catch(console.error)
 
     // Broker, you need this only if you're broker provider
@@ -20,13 +21,13 @@ describe('Rainbow', () => {
     // Worker, you need this only if you want to provide some service which is GraphQL in this case
     const graphqlURI = `${baseURL}/graphql`
     const { Worker } = require('../')
-    const worker = new Worker(brokerURI, serviceName)
+    const worker = new Worker(brokerURI, serviceName, { secret })
     worker.initGraphQL(graphqlURI)
     await worker.start().catch(console.error)
 
     // Client, you need this if you want to fetch something from worker
     const { Client } = require('../')
-    const client = new Client(brokerURI, serviceName)
+    const client = new Client(brokerURI, serviceName, { secret })
     await client.start().catch(console.error)
 
     // Mutate from client
@@ -37,8 +38,12 @@ describe('Rainbow', () => {
     const queryResult = await client.fetch({ query: `{ getFoo }` }).catch(console.error)
     expect(JSON.parse(queryResult)).toMatchObject({ data: { getFoo: 'world!' } })
 
-    // Close for next test
-    await graphQLServer.stop()
+    // Clean exit
+    await graphQLServer.stop().catch(console.error)
+    await worker.stop()
+    await client.stop()
+    await broker.stop()
+
     done()
   })
 })
