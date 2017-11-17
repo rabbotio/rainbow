@@ -11,35 +11,35 @@ describe('Rainbow', () => {
     const { GraphQLServer } = require('../')
     const schema = require('./schemas')
     const graphQLServer = new GraphQLServer(baseURL, schema)
-    await graphQLServer.start().catch(console.error)
+    await graphQLServer.start()
 
     // Broker, you need this only if you're broker provider
     const { Broker } = require('../')
     const broker = new Broker(brokerURI)
-    await broker.start().catch(console.error)
+    await broker.start()
 
     // Worker, you need this only if you want to provide some service which is GraphQL in this case
     const graphqlURI = `${baseURL}/graphql`
     const { Worker } = require('../')
     const worker = new Worker(brokerURI, serviceName, { secret })
     worker.initGraphQL(graphqlURI)
-    await worker.start().catch(console.error)
+    await worker.start()
 
     // Client, you need this if you want to fetch something from worker
     const { Client } = require('../')
-    const client = new Client(brokerURI, serviceName, { secret })
-    await client.start().catch(console.error)
+    const client = new Client(brokerURI, { secret })
+    await client.start()
 
     // Mutate from client
-    const mutationResult = await client.fetch({ query: `mutation { setFoo(bar: "world!") }` }).catch(console.error)
+    const mutationResult = await client.fetch(serviceName, { query: `mutation { setFoo(bar: "world!") }` })
     expect(JSON.parse(mutationResult)).toMatchObject({ data: { setFoo: 'world!' } })
 
     // Then query
-    const queryResult = await client.fetch({ query: `{ getFoo }` }).catch(console.error)
+    const queryResult = await client.fetch(serviceName, { query: `{ getFoo }` })
     expect(JSON.parse(queryResult)).toMatchObject({ data: { getFoo: 'world!' } })
 
     // Clean exit
-    await graphQLServer.stop().catch(console.error)
+    await graphQLServer.stop()
     await worker.stop()
     await client.stop()
     await broker.stop()
